@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="java76.pms.dao.ReplyDao">
+
+  <resultMap type="reply" id="replyMap">
+    <result column="mno" property="no"/>
+    <result column="cre_dt" property="date"/>
+  </resultMap>
+
+  <select id="selectList" resultMap="replyMap" parameterType="String">
+    select 
+    id, productname, reply, cre_dt, rno
+    from reply where productname=#{productname}
+    order by 
+    <choose>
+      <otherwise>rno </otherwise>
+    </choose>
+    <choose>
+      <otherwise>asc</otherwise>
+    </choose>
+  </select>
+  
+  <insert id="insert" parameterType="reply">
+    insert into reply(id, reply, productname,cre_dt) 
+    values(#{id},#{reply},#{productname},now())
+  </insert>
+  
+  <delete id="delete" parameterType="int">
+    delete from reply 
+  	where rno=#{no}
+  </delete>
+  
+  <update id="update" parameterType="reply">
+    update reply set
+    reply=#{reply},
+    cre_dt=now()
+    where rno=#{no}
+  </update>
+  
+</mapper>
+
+
+
+
+
+
