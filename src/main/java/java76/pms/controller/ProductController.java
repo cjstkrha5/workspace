@@ -66,7 +66,7 @@ public class ProductController {
     request.setAttribute("pageCount", (products.size()/10));
     request.setAttribute("products", products);
     return "product/ProductList";
-  }
+  } 
   
   @RequestMapping(value="add", method=RequestMethod.GET)
   public String form() {
