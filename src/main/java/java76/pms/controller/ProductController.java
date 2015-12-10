@@ -71,7 +71,7 @@ public class ProductController {
   @RequestMapping(value="add", method=RequestMethod.GET)
   public String form() {
     return "product/ProductForm";
-  }
+  } 
   
   @RequestMapping(value="add", method=RequestMethod.POST)
   public String add(
